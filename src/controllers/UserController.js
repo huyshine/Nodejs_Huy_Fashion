@@ -136,7 +136,7 @@ const getDetailsUser = async (req, res) => {
 const refreshToken = async (req, res) => {
     try {
         let token = req.headers.authorization.split(' ')[1]
-        console.log("refes",token);
+        console.log("refes ",token);
         if (!token) {
             return res.status(200).json({
                 status: 'ERR',
