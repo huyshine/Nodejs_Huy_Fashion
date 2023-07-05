@@ -3,9 +3,9 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const authMiddleWare = (req, res, next) => {
-    const token = req.headers.authorization.split(' ')[1]
-    // console.log("heder",req.headers);
-    // console.log("token" ,token);
+    const token = req.headers.token.split(' ')[1]
+    console.log("header",req.headers);
+    console.log("token" ,token);
     jwt.verify(token, process.env.ACCESS_TOKEN, function (err, user) {
         if (err) {
             return res.status(404).json({
@@ -25,8 +25,8 @@ const authMiddleWare = (req, res, next) => {
 }
 
 const authUserMiddleWare = (req, res, next) => {
-    const token = req.headers.authorization.split(' ')[1]
-    // console.log("req.headers", req.headers);
+    const token = req.headers.token.split(' ')[1]
+    console.log("req.headers", token);
     const userId = req.params.id
     // console.log(userId);
     jwt.verify(token, process.env.ACCESS_TOKEN, function (err, user) {
